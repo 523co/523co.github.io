@@ -7,16 +7,215 @@
     <meta name="description" content="523co.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preload" href="fonts/fixedsys.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
   </head>
 <body>
-    <div>
-        <span class="name">523co</span><br>
-        A Web Company | soon™<br>
-        <br>
-        <a href="mailto:mail@523r.com">email</a>
-        <a href="https://523r.com/">website</a>
-        <a href="https://github.com/523Co">github</a>
+    <div class="desktop">
+        <button class="icon" data-open="main">
+            <img src="icons/floppy.svg" alt="">
+            <span class="icon-label">523co.exe</span>
+        </button>
+        <button class="icon" data-open="readme">
+            <img src="icons/notepad.svg" alt="">
+            <span class="icon-label">readme.txt</span>
+        </button>
+        <button class="icon" data-link="mailto:mail@523r.com">
+            <img src="icons/envelope.svg" alt="">
+            <span class="icon-label">email</span>
+        </button>
+        <button class="icon" data-link="https://523r.com/">
+            <img src="icons/globe.svg" alt="">
+            <span class="icon-label">website</span>
+        </button>
+        <button class="icon" data-link="https://github.com/523Co">
+            <img src="icons/cat.svg" alt="">
+            <span class="icon-label">github</span>
+        </button>
+        <button class="icon" data-open="recycle">
+            <img src="icons/bin.svg" alt="">
+            <span class="icon-label">Recycle Bin</span>
+        </button>
     </div>
+
+    <div class="window" id="main" hidden>
+        <div class="title-bar">
+            <span class="title"><img src="icons/floppy.svg" alt="">523co.exe</span>
+            <div class="title-buttons">
+                <button aria-label="Minimize" data-action="minimize"><img src="icons/minimize.svg" alt=""></button>
+                <button aria-label="Maximize" data-action="maximize"><img src="icons/maximize.svg" alt=""></button>
+                <button aria-label="Close" data-action="close"><img src="icons/close.svg" alt=""></button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span><u>F</u>ile</span>
+            <span><u>E</u>dit</span>
+            <button class="menu-item" data-open="about"><u>H</u>elp</button>
+        </div>
+        <div class="content">
+            <span class="name">523co</span><br>
+            A Web Company | soon™
+        </div>
+        <div class="links">
+            <a class="button" href="mailto:mail@523r.com">email</a>
+            <a class="button" href="https://523r.com/">website</a>
+            <a class="button" href="https://github.com/523Co">github</a>
+        </div>
+    </div>
+
+    <div class="window" id="readme" hidden>
+        <div class="title-bar">
+            <span class="title"><img src="icons/notepad.svg" alt="">readme.txt - Notepad</span>
+            <div class="title-buttons">
+                <button aria-label="Minimize" data-action="minimize"><img src="icons/minimize.svg" alt=""></button>
+                <button aria-label="Maximize" data-action="maximize"><img src="icons/maximize.svg" alt=""></button>
+                <button aria-label="Close" data-action="close"><img src="icons/close.svg" alt=""></button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span><u>F</u>ile</span>
+            <span><u>E</u>dit</span>
+            <span><u>S</u>earch</span>
+            <button class="menu-item" data-open="about"><u>H</u>elp</button>
+        </div>
+        <textarea class="notepad" spellcheck="false">523co
+=====
+
+A Web Company.
+
+status ........ coming soon™
+email ......... mail@523r.com
+website ....... 523r.com
+github ........ github.com/523Co
+</textarea>
+    </div>
+
+    <div class="window" id="recycle" hidden>
+        <div class="title-bar">
+            <span class="title"><img src="icons/bin.svg" alt="">Recycle Bin</span>
+            <div class="title-buttons">
+                <button aria-label="Minimize" data-action="minimize"><img src="icons/minimize.svg" alt=""></button>
+                <button aria-label="Maximize" data-action="maximize"><img src="icons/maximize.svg" alt=""></button>
+                <button aria-label="Close" data-action="close"><img src="icons/close.svg" alt=""></button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span><u>F</u>ile</span>
+            <span><u>E</u>dit</span>
+            <span><u>V</u>iew</span>
+            <button class="menu-item" data-open="about"><u>H</u>elp</button>
+        </div>
+        <div class="content empty">
+            This folder is empty.
+        </div>
+        <div class="status-bar">0 object(s)</div>
+    </div>
+
+    <div class="window" id="about" hidden>
+        <div class="title-bar">
+            <span class="title">About 523co</span>
+            <div class="title-buttons">
+                <button aria-label="Close" data-action="close"><img src="icons/close.svg" alt=""></button>
+            </div>
+        </div>
+        <div class="dialog">
+            <img class="dialog-img" src="icons/floppy.svg" alt="">
+            <div>
+                <span class="name">523co 95</span><br>
+                Version 4.00.950<br>
+                A Web Company | soon™
+            </div>
+        </div>
+        <div class="links">
+            <button class="button default" data-action="close">OK</button>
+        </div>
+    </div>
+
+    <div class="dim" id="dim" hidden></div>
+
+    <div class="window" id="shutdown-dialog" hidden>
+        <div class="title-bar">
+            <span class="title">Shut Down 523co</span>
+            <div class="title-buttons">
+                <button aria-label="Close" data-action="close"><img src="icons/close.svg" alt=""></button>
+            </div>
+        </div>
+        <div class="dialog">
+            <img class="dialog-img" src="icons/computer.svg" alt="">
+            <div>
+                Are you sure you want to:<br>
+                <label><input type="radio" name="shutdown" value="shutdown" checked> Shut down the computer?</label><br>
+                <label><input type="radio" name="shutdown" value="restart"> Restart the computer?</label>
+            </div>
+        </div>
+        <div class="links">
+            <button class="button default" id="shutdown-yes">Yes</button>
+            <button class="button" data-action="close">No</button>
+            <button class="button" data-open="about">Help</button>
+        </div>
+    </div>
+
+    <div class="start-menu" id="start-menu" hidden>
+        <div class="start-banner"><b>523co</b>95</div>
+        <div class="start-items">
+            <div class="start-sub">
+                <button class="start-item"><img src="icons/folder.svg" alt="">Programs<span class="arrow">►</span></button>
+                <div class="submenu">
+                    <button class="start-item" data-open="main"><img src="icons/floppy.svg" alt="">523co.exe</button>
+                    <button class="start-item" data-open="readme"><img src="icons/notepad.svg" alt="">Notepad</button>
+                    <button class="start-item" data-open="recycle"><img src="icons/bin.svg" alt="">Recycle Bin</button>
+                </div>
+            </div>
+            <div class="start-sub">
+                <button class="start-item"><img src="icons/folder.svg" alt="">Favorites<span class="arrow">►</span></button>
+                <div class="submenu">
+                    <a class="start-item" href="mailto:mail@523r.com"><img src="icons/envelope.svg" alt="">email</a>
+                    <a class="start-item" href="https://523r.com/"><img src="icons/globe.svg" alt="">website</a>
+                    <a class="start-item" href="https://github.com/523Co"><img src="icons/cat.svg" alt="">github</a>
+                </div>
+            </div>
+            <div class="start-sub">
+                <button class="start-item"><img src="icons/notepad.svg" alt="">Documents<span class="arrow">►</span></button>
+                <div class="submenu">
+                    <button class="start-item" data-open="readme"><img src="icons/notepad.svg" alt="">readme.txt</button>
+                </div>
+            </div>
+            <button class="start-item" data-open="about"><img src="icons/help.svg" alt="">Help</button>
+            <div class="start-divider"></div>
+            <button class="start-item" id="shutdown-btn"><img src="icons/computer.svg" alt="">Shut Down...</button>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="button start" id="start"><img src="icons/floppy.svg" alt="">Start</button>
+        <div class="tasks">
+            <button class="button task" data-task="main" hidden><img src="icons/floppy.svg" alt=""><span>523co.exe</span></button>
+            <button class="button task" data-task="readme" hidden><img src="icons/notepad.svg" alt=""><span>readme.txt - Notepad</span></button>
+            <button class="button task" data-task="recycle" hidden><img src="icons/bin.svg" alt=""><span>Recycle Bin</span></button>
+            <button class="button task" data-task="about" hidden><span>About 523co</span></button>
+            <button class="button task" data-task="shutdown-dialog" hidden><span>Shut Down 523co</span></button>
+        </div>
+        <div class="tray">
+            <img src="icons/speaker.svg" alt="">
+            <span id="clock"></span>
+        </div>
+    </div>
+
+    <div class="boot" id="boot" hidden>
+        <div class="boot-text">Starting 523co 95...</div>
+        <div class="boot-splash">
+            <img class="boot-logo" src="icons/floppy.svg" alt="">
+            <div class="boot-title"><b>523co</b> 95</div>
+            <div class="boot-bar"></div>
+        </div>
+    </div>
+
+    <div class="shutdown" id="shutdown" hidden>
+        It's now safe to turn off<br>
+        your computer.
+        <span class="shutdown-hint">click anywhere to restart</span>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
